@@ -44,8 +44,43 @@ ggplot(d2,aes(x=carat, y=price, color=color))+geom_point()
 
 # Built-in stat example: Boxplots
 library(MASS)
+myplot2<- ggplot(birthwt, aes(factor(race),bwt)) + geom_boxplot()
+summary(myplot2)
+
+# Facets
+# single column, multiple rows
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width,color=Species)) +
+  geom_point()+
+  facet_grid(Species ~ .)
+# single row, multiple columns
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width,color=Species)) +
+  geom_point()+
+  facet_grid(. ~ Species)
+# wrap your facets
+ggplot(iris, aes(x=Sepal.Length, y=Sepal.Width,color=Species)) +
+  geom_point()+
+  facet_wrap( ~ Species) # notice lack of .
+
+# Scales
+# used for adjusting color
+# Color
+aes(color = variable)#mapping
+color = "black"
+# RColorBrewer package
+library(RColorBrewer)
+display.brewer.all()
+# Using a color brewer
+df<-melt(iris,id.vars="Species")
+ggplot(df,aes(Species,value, fill=variable))+
+  geom_bar(stat="identity", position = "dodge")+
+  scale_fill_brewer(palette = "Set1")
+#Manual color scale
+ggplot(iris,aes(Species,value, fill=variable))+
+  geom_bar(stat="identity", position = "dodge")+
+  scale_color_manuel
+# i want hue
+
 ggplot(birthwt, aes(factor(race),bwt)) + geom_boxplot()
 
-
-
+#done
 
