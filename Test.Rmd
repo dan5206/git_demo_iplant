@@ -36,3 +36,15 @@ lifeexp<-cbind(agg.mean,agg.min[,2],agg.max[,2])
 names(lifeexp)<-c("continent","mean","max","min")
 lifeexp
 ```
+
+```{r}
+#default bin
+ggplot(data=mydata, aes(x=lifeExp)) +
+  geom_histogram(fill="blue",col="black")
+#narrow bin
+ggplot(data=mydata, aes(x=lifeExp)) +
+  geom_histogram(fill="blue",col="black",binwidth=1.5)
+```
+
+data if left skewed.
+
