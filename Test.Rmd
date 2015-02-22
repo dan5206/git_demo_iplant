@@ -1,0 +1,30 @@
+---
+title: "Final exercise"
+author: "DL"
+date: "Sunday, February 22, 2015"
+output: html_document
+---
+
+
+```{r}
+setwd("C:/Users/LXY/Desktop/iplant_workshop/output")
+mydata<-read.table(file.choose(), sep="\t",header=T)            
+```
+
+```{r}
+library(ggplot2)
+library(plyr)
+library(ggthemes)
+library(reshape2)
+dat<-subset(mydata, country==c("China","Japan","Cuba"))
+# plots year versus GDP
+ggplot(data=dat, aes(x=year, y=gdpPercap,color=country)) +
+  geom_point()+
+  facet_grid(. ~ country)
+```
+
+GDP increase with year for all three counties.
+
+
+
+
