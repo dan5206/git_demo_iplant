@@ -12,9 +12,12 @@ cat data/clean/country.cc.txt > $OUTPUT_FILE
 mv -v data/clean/country.cc.txt data/clean/country.cc.processed
 sleep 2
 
+#Move countries file so we can get everything but the country header 
+#file
 cat data/clean/*.cc.txt 
 sleep 2
 cat data/clean/*.cc.txt >> $OUTPUT_FILE
 
+#Reset country header file back to normal
 mv -v data/clean/country.cc.processed data/clean/country.cc.txt
 
