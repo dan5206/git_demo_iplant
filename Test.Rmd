@@ -25,6 +25,14 @@ ggplot(data=dat, aes(x=year, y=gdpPercap,color=country)) +
 
 GDP increase with year for all three counties.
 
-
-
-
+```{r}
+agg.mean<-aggregate(mydata$lifeExp, by=list(mydata$continent), 
+  FUN=mean, na.rm=TRUE)
+agg.min<-aggregate(mydata$lifeExp, by=list(mydata$continent), 
+  FUN=min, na.rm=TRUE)
+agg.max<-aggregate(mydata$lifeExp, by=list(mydata$continent), 
+  FUN=max, na.rm=TRUE)
+lifeexp<-cbind(agg.mean,agg.min[,2],agg.max[,2])
+names(lifeexp)<-c("continent","mean","max","min")
+lifeexp
+```
